@@ -3,7 +3,7 @@ from django.http import HttpResponse
 import json
 from .models import Contact
 # Create your views here.
-def index(request):
+def home(request):
 
     if request.method == 'POST'and request.is_ajax():
         
@@ -19,12 +19,12 @@ def index(request):
         # return name and gender to success in ajax call top update content
         return HttpResponse(json.dumps({'name': username, 'gender': gender}))
     else:
-        return render(request, 'mypf/home.html')
+        return render(request, 'home/home.html')
 
 
 #Portfolio View
 def portfolio(request):
-    return render(request, 'mypf/portfolio.html')
+    return render(request, 'home/portfolio.html')
 
 
 # Contact View
@@ -38,6 +38,6 @@ def contact(request):
         # Saving Form data to Database
         form.save()
 
-        return render(request, 'mypf/contact.html')
+        return render(request, 'home/contact.html')
     else:
-        return render(request, 'mypf/contact.html')
+        return render(request, 'home/contact.html')
